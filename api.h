@@ -11,6 +11,7 @@ class Api : public QObject
 public:
     explicit Api(QObject *parent = nullptr);
     Q_INVOKABLE QVariantMap invoke(QString funName, QVariantMap arg);
+    Q_INVOKABLE QList<QVariantMap> getModule();
 
 private:
     QString cookie = "";
