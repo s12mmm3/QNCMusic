@@ -9,6 +9,11 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+
+option(MUSICAPI_TEST "Build Test" OFF)
+option(MUSICAPI_CAPI "Build CApi" OFF)
+option(MUSICAPI_SERVER "Build ApiServer" OFF)
+option(MUSICAPI_SETOUTPUTPATH "Set default output path" OFF)
 add_subdirectory(QCloudMusicApi)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick QuickControls2)

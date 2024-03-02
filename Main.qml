@@ -100,17 +100,20 @@ ApplicationWindow {
         }
     }
 
-    Item {
+    StackView {
+        id: stackView
         anchors.fill: parent
-        StackView {
-            id: stackView
-            anchors.fill: parent
-            onDepthChanged: {
-                console.log("Pages list:")
-                for(let i = 0; i < depth; i++) {
-                    let item = get(i, StackView.ForceLoad)
-                    console.log(i, item.title)
-                }
+        onDepthChanged: {
+            console.log("Pages list:")
+            for(let i = 0; i < depth; i++) {
+                let item = get(i, StackView.ForceLoad)
+                console.log(i, item.title)
+            }
+        }
+        Keys.onPressed: {
+            if (event.key === Qt.Key_Back) {
+                event.accepted = true
+                pop()
             }
         }
     }
