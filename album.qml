@@ -6,7 +6,7 @@ Page {
     id: root
     property var model: getModel(129194941)
     function getModel(id) {
-        return $api.invoke("album",
+        return $apiHelper.invoke("album",
                            {
                                "id": id
                            }

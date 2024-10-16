@@ -1,4 +1,4 @@
-﻿#include "api.h"
+﻿#include "QCloudMusicApi/QCloudMusicApi/apihelper.h"
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
@@ -16,8 +16,20 @@ int main(int argc, char *argv[])
     QQuickStyle::setStyle("Material");
 
     QQmlApplicationEngine engine;
-    Api api;
-    engine.rootContext()->setContextProperty("$api", &api);
+    ApiHelper apiHelper;
+    apiHelper.invoke("register_anonimous", {});
+    engine.rootContext()->setContextProperty("$apiHelper", &apiHelper);
+    engine.rootContext()->setContextProperty("$modules", []() {
+        QVariantList list;
+        QDir dir(":/module");
+        foreach (auto i, dir.entryList()) {
+            list.append(QVariantMap {
+                { "name", QFileInfo(i).baseName() },
+                { "path", "qrc:/module/" + i }
+            });
+        }
+        return list;
+    }());
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
         &app, [url](QObject *obj, const QUrl &objUrl) {

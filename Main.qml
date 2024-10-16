@@ -81,7 +81,7 @@ ApplicationWindow {
         ListView {
             anchors.fill: parent
             spacing: 5
-            model: $api.getModule()
+            model: $modules
             header: Pane {
 
             }

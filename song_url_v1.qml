@@ -7,11 +7,9 @@ Page {
     id: root
     property var model: getModel(129194941)
     function getModel(id) {
-        return $api.invoke("song_url_v1",
+        return $apiHelper.invoke("song_url_v1",
                            {
-                               "id": [
-                                   id
-                               ],
+                               "id": id,
                                "level": "exhigh"
                            }
                            )["body"]

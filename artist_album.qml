@@ -6,7 +6,7 @@ Page {
     id: root
     property var model: getModel(15396)
     function getModel(id) {
-        return $api.invoke("artist_album",
+        return $apiHelper.invoke("artist_album",
                            {
                                "id": id,
                                "limit": 5
